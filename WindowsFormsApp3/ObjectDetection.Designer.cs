@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.accept_detect = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.confThreshold = new System.Windows.Forms.ComboBox();
+            this.itemSize = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -44,6 +46,7 @@
             // 
             // accept_detect
             // 
+            this.accept_detect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.accept_detect.Location = new System.Drawing.Point(401, 20);
             this.accept_detect.Name = "accept_detect";
             this.accept_detect.Size = new System.Drawing.Size(95, 33);
@@ -55,19 +58,47 @@
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(0, 62);
+            this.textBox1.Location = new System.Drawing.Point(0, 194);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(524, 148);
+            this.textBox1.Size = new System.Drawing.Size(522, 148);
             this.textBox1.TabIndex = 2;
             this.textBox1.Visible = false;
+            // 
+            // confThreshold
+            // 
+            this.confThreshold.DisplayMember = "0";
+            this.confThreshold.FormattingEnabled = true;
+            this.confThreshold.Items.AddRange(new object[] {
+            "0,3",
+            "0,6",
+            "0,9"});
+            this.confThreshold.Location = new System.Drawing.Point(389, 78);
+            this.confThreshold.Name = "confThreshold";
+            this.confThreshold.Size = new System.Drawing.Size(121, 21);
+            this.confThreshold.TabIndex = 3;
+            // 
+            // itemSize
+            // 
+            this.itemSize.FormattingEnabled = true;
+            this.itemSize.Items.AddRange(new object[] {
+            "32",
+            "64",
+            "128",
+            "256"});
+            this.itemSize.Location = new System.Drawing.Point(389, 126);
+            this.itemSize.Name = "itemSize";
+            this.itemSize.Size = new System.Drawing.Size(121, 21);
+            this.itemSize.TabIndex = 4;
             // 
             // ObjectDetection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(524, 210);
+            this.ClientSize = new System.Drawing.Size(522, 342);
+            this.Controls.Add(this.itemSize);
+            this.Controls.Add(this.confThreshold);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.accept_detect);
             this.Controls.Add(this.label1);
@@ -83,5 +114,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button accept_detect;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox confThreshold;
+        private System.Windows.Forms.ComboBox itemSize;
     }
 }

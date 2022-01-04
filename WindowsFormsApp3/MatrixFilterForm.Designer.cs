@@ -38,6 +38,7 @@ namespace WindowsFormsApp3
             this.nudConvSize = new System.Windows.Forms.NumericUpDown();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -70,6 +71,8 @@ namespace WindowsFormsApp3
             this.matrixType.Name = "matrixType";
             this.matrixType.Size = new System.Drawing.Size(116, 21);
             this.matrixType.TabIndex = 10;
+            this.matrixType.SelectedIndexChanged += new System.EventHandler(this.matrixType_SelectedIndexChanged);
+ 
             // 
             // filterAccept
             // 
@@ -138,6 +141,7 @@ namespace WindowsFormsApp3
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.linkLabel5);
             this.panel1.Controls.Add(this.linkLabel4);
@@ -149,6 +153,17 @@ namespace WindowsFormsApp3
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(624, 362);
             this.panel1.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(447, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(158, 31);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Исходное изображение";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -186,6 +201,7 @@ namespace WindowsFormsApp3
             this.linkLabel4.TabIndex = 15;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "Резкость";
+            this.linkLabel4.Visible = false;
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // linkLabel3
@@ -212,6 +228,7 @@ namespace WindowsFormsApp3
             this.linkLabel2.TabIndex = 13;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Тиснение";
+            this.linkLabel2.Visible = false;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // linkLabel1
@@ -225,6 +242,7 @@ namespace WindowsFormsApp3
             this.linkLabel1.TabIndex = 12;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Фильтр Собеля";
+            this.linkLabel1.Visible = false;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // MatrixFilterForm
@@ -270,5 +288,6 @@ namespace WindowsFormsApp3
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button button1;
     }
 }

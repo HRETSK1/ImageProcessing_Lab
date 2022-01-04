@@ -21,11 +21,12 @@ namespace WindowsFormsApp3
         {
             OwnerForm = ownerForm;
             InitializeComponent();
+            
         }
-
 
         private void accept_detect_Click(object sender, EventArgs e)
         {
+            Form1.image = new Bitmap(Form1.rollBack);
             int objNumber = 1;
             label1.Text = "Идёт обработка";
             YoloWrapper yolo = new YoloWrapper("yolov3.cfg", "yolov3.weights", "coco.names");
@@ -40,9 +41,15 @@ namespace WindowsFormsApp3
             SolidBrush sbrush = new SolidBrush(Color.Blue);
             foreach (YoloItem i in objList)
             {
-               // if (i.Type == "bus" || i.Type == "train")
+                if (confThreshold.SelectedItem == null)
+                    confThreshold.SelectedItem = "0,0";
+                if (itemSize.SelectedItem == null)
+                    itemSize.SelectedItem = "0";
+
+                if(i.Type == "bus" || i.Type == "train") { 
+                if (i.Confidence >= Convert.ToDouble(confThreshold.SelectedItem) && i.Height >= Convert.ToInt32(itemSize.SelectedItem) && i.Width >= Convert.ToInt32(itemSize.SelectedItem))
                 {
-                    var title = $"{objNumber} {i.Type}";
+                    var title = $"{objNumber} {i.Type}\n{i.Width}x{i.Height}";
                     Point point = new Point(i.X, i.Y);
                     Size size = new Size(i.Width, i.Height);
                     Rectangle rect = new Rectangle(point, size);
@@ -53,8 +60,8 @@ namespace WindowsFormsApp3
                     textBox1.AppendText(Environment.NewLine);
                     label1.Text = "Обработка завершена";
                 }
-              //  else
-                //    label1.Text = "Указанные объекты не найдены";
+               }
+   
             }
             Form1.image = new Bitmap(img);
                       

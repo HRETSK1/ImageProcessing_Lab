@@ -44,6 +44,7 @@ namespace WindowsFormsApp3
             this.фильтрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.matrixFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.freqFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.детектированиеОбъектовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.thresholdInput = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@ namespace WindowsFormsApp3
             this.timer = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.детектированиеОбъектовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -169,7 +169,15 @@ namespace WindowsFormsApp3
             this.freqFilterToolStripMenuItem.Name = "freqFilterToolStripMenuItem";
             this.freqFilterToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.freqFilterToolStripMenuItem.Text = "Частотный фильтр";
+            this.freqFilterToolStripMenuItem.Visible = false;
             this.freqFilterToolStripMenuItem.Click += new System.EventHandler(this.freqFilterToolStripMenuItem_Click);
+            // 
+            // детектированиеОбъектовToolStripMenuItem
+            // 
+            this.детектированиеОбъектовToolStripMenuItem.Name = "детектированиеОбъектовToolStripMenuItem";
+            this.детектированиеОбъектовToolStripMenuItem.Size = new System.Drawing.Size(162, 37);
+            this.детектированиеОбъектовToolStripMenuItem.Text = "Детектирование объектов";
+            this.детектированиеОбъектовToolStripMenuItem.Click += new System.EventHandler(this.детектированиеОбъектовToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -275,13 +283,6 @@ namespace WindowsFormsApp3
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // детектированиеОбъектовToolStripMenuItem
-            // 
-            this.детектированиеОбъектовToolStripMenuItem.Name = "детектированиеОбъектовToolStripMenuItem";
-            this.детектированиеОбъектовToolStripMenuItem.Size = new System.Drawing.Size(162, 37);
-            this.детектированиеОбъектовToolStripMenuItem.Text = "Детектирование объектов";
-            this.детектированиеОбъектовToolStripMenuItem.Click += new System.EventHandler(this.детектированиеОбъектовToolStripMenuItem_Click);
             // 
             // Form1
             // 

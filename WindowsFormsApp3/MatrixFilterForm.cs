@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
+
     public partial class MatrixFilterForm : Form
     {
         readonly Form1 OwnerForm;
@@ -23,6 +24,7 @@ namespace WindowsFormsApp3
                 for (int j = 0; j < 3; j++)
                 {
                     NumericUpDown numbUD = new NumericUpDown();
+                    numbUD.DecimalPlaces = 1;
                     numbUD.Top = i * 20 + 100;
                     numbUD.Width = 45;
                     numbUD.Minimum = -numbUD.Maximum;
@@ -40,7 +42,7 @@ namespace WindowsFormsApp3
         }
         public void generate_conv(int[] conv_array)
         {
-            matrixType.SelectedItem = "ВЧ";
+            //matrixType.SelectedItem = "ВЧ";
             int val = (int)Math.Sqrt(conv_array.Length);
             nudConvSize.Value = val;
             for (int i = 0; i < val * val; i++)
@@ -57,6 +59,7 @@ namespace WindowsFormsApp3
             }
             else
             {
+                
                 double sumEl = 0.0;
                 errorProvider1.Clear();
                 int val = (int)nudConvSize.Value;
@@ -69,10 +72,11 @@ namespace WindowsFormsApp3
                         {
                             for (int k = 0; k < val; k++)
                             {
-                                conv_matrix[i, k] = (int)numud_list.ElementAt(pos).Value;
+                                conv_matrix[i, k] = (double)numud_list.ElementAt(pos).Value;
                                 pos++;
                             }
                         }
+
                         break;
 
                     case "НЧ":
@@ -84,7 +88,7 @@ namespace WindowsFormsApp3
                         {
                             for (int k = 0; k < val; k++)
                             {
-                                conv_matrix[i, k] = (int)numud_list.ElementAt(pos).Value / sumEl;
+                                conv_matrix[i, k] = (double)numud_list.ElementAt(pos).Value / sumEl;
                                 pos++;
                             }
                         }
@@ -93,7 +97,6 @@ namespace WindowsFormsApp3
                 GenericFilter sharpen = new GenericFilter();
                 sharpen.FilterName = "Sharpen";
                 sharpen.FilterMatrix = conv_matrix;
-                //Form1.stopWatch.Start();
                 Form1.image = Form1.image.ConvolutionFilter(sharpen);
                 FromBitmapToScreen();
                 UndoImg();
@@ -113,6 +116,7 @@ namespace WindowsFormsApp3
                 for (int j = 0; j < val; j++)
                 {
                     NumericUpDown numbUD = new NumericUpDown();
+                    numbUD.DecimalPlaces = 1;
                     numbUD.Top = i * 20 + 100;
                     numbUD.Width = 45;
                     numbUD.Minimum = -numbUD.Maximum;
@@ -138,6 +142,12 @@ namespace WindowsFormsApp3
         void FromBitmapToScreen()
         {
             OwnerForm.FromBitmapToScreen();
+        }
+
+        void SourseImage()
+        {
+            Form1.image = Form1.rollBack;
+            FromBitmapToScreen();
         }
         void UndoImg()
         {
@@ -169,5 +179,25 @@ namespace WindowsFormsApp3
         {
             generate_conv(new int[9] { 0, 1, 0, 1, -4, 1, 0, 1, 0 });
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SourseImage();
+         }
+
+        private void matrixType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (matrixType.SelectedItem == "ВЧ")
+            {
+                generate_conv(new int[9] { -1, -1, -1, -1, 9, -1, -1, -1, -1 });
+                // matrixType.SelectedItem = "ВЧ";
+            }
+            else
+            {
+                generate_conv(new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 });
+                //matrixType.SelectedItem = "НЧ";
+            }
+        }
+
     }
 }

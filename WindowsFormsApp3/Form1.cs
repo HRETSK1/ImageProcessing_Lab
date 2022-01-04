@@ -20,7 +20,7 @@ namespace WindowsFormsApp3
         public static Bitmap prev;
         public uint pixel;
         private static int count = 0;
-        private static Bitmap rollBack;
+        public static Bitmap rollBack;
         private static int threshold = 500;
         private readonly List<NumericUpDown> numud_list = new List<NumericUpDown>();
         private readonly Stopwatch stopWatch = new Stopwatch();
@@ -223,7 +223,7 @@ namespace WindowsFormsApp3
             }
         }
 
-        private void SourceImageToolStripMenuItem_Click(object sender, EventArgs e)
+        public void SourceImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = null;
             pictureBox1.Image = null;
@@ -322,7 +322,7 @@ namespace WindowsFormsApp3
                 ComplexImage complexImage = ComplexImage.FromBitmap((Bitmap)Convert(image));
                 complexImage.ForwardFourierTransform();
                 FrequencyFilter filter = new FrequencyFilter(form.OutputRange);
-                filter.Apply(complexImage);
+                filter.Apply(complexImage);               
                 complexImage.BackwardFourierTransform();
                 Bitmap fourierImage = complexImage.ToBitmap();
                 image = fourierImage;

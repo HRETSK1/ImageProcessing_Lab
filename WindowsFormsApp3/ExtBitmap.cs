@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
@@ -62,7 +63,7 @@ namespace WindowsFormsApp3
                     if (green > 255) { green = 255; } else if (green < 0) { green = 0; }
 
                     if (red > 255) { red = 255; } else if (red < 0) { red = 0; }
-
+                   // BitConverter.ToDouble(resultBuffer, byteOffset);
                     resultBuffer[byteOffset] = (byte)(blue);
                     resultBuffer[byteOffset + 1] = (byte)(green);
                     resultBuffer[byteOffset + 2] = (byte)(red);
